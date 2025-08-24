@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function login(Request $request)
+    {
+        $incomingFields = $request->validate([
+            'loginname' => ['required'],
+            'loginpassword' => ['required']
+        ]);
+
+        if (Auth::attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
+            $request->session()->regenerate();
+            return redirect('/');
+        } else {
+            return redirect('/')->with('failure', 'Invalid Login');
+        }
+    }
+
     public function register(Request $request)
     {
         $incomingFields = $request->validate([

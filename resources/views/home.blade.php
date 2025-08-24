@@ -25,8 +25,17 @@
                 <input name="name" type="text" placeholder="name">
                 <input name="email" type="text" placeholder="email">
                 <input name="password" type="password" placeholder="password">
-                {{-- <input type="submit" value="submit"> --}}
-                <button>Submit</button>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+
+        <div style="border: 3px solid black;">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                @csrf
+                <input name="loginname" type="text" placeholder="name">
+                <input name="loginpassword" type="password" placeholder="password">
+                <input type="submit" value="Login">
             </form>
         </div>
     @endauth
