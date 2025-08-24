@@ -8,7 +8,12 @@
 </head>
 <body>
     <h1>Home Page</h1>
-    <div style="border: 3px solid black;">
+
+    @auth
+<p>Congrats you're logged in!</p>
+
+    @else
+<div style="border: 3px solid black;">
         <h2>Register</h2>
         <form action="/register" method="POST">
             @csrf
@@ -16,8 +21,9 @@
             <input name="email" type="text" placeholder="email">
             <input name="password" type="password" placeholder="password">
             {{-- <input type="submit" value="submit"> --}}
-            <button type="submit">Submit</button>
+            <button>Submit</button>
         </form>
     </div>
+    @endauth
 </body>
 </html>
