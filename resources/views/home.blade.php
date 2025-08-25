@@ -27,6 +27,17 @@
                 <input type="submit" value="Create Post">
             </form>
         </div>
+
+        <div style="border: 3px solid black;">
+            <h2>Your Posts</h2>
+            @foreach ($userPosts as $post)
+                <div style="margin-bottom: 20px;">
+                    <h3>{{ $post->title }}</h3>
+                    <p>{{ $post->body }}</p>
+                    <hr>
+                </div>
+            @endforeach
+        </div>
     @else
         <div style="border: 3px solid black;">
             <h2>Register</h2>
@@ -47,6 +58,17 @@
                 <input name="loginpassword" type="password" placeholder="password">
                 <input type="submit" value="Login">
             </form>
+        </div>
+
+        <div style="border: 3px solid black;">
+            <h2>All Posts</h2>
+            @foreach ($posts as $post)
+                <div style="margin-bottom: 20px;">
+                    <h3>{{ $post->title }}</h3>
+                    <p>{{ $post->body }}</p>
+                    <hr>
+                </div>
+            @endforeach
         </div>
     @endauth
 </body>
