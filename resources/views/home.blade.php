@@ -23,7 +23,8 @@
             <form action="/create-post" method="POST">
                 @csrf
                 <input name="title" type="text" placeholder="title">
-                <input name="body" type="text" placeholder="body">
+                <textarea name="body" type="text" placeholder="body">
+                </textarea>
                 <input type="submit" value="Create Post">
             </form>
         </div>
@@ -34,6 +35,13 @@
                 <div style="margin-bottom: 20px;">
                     <h3>{{ $post->title }}</h3>
                     <p>{{ $post->body }}</p>
+                    <p><a href="/edit-post/{{ $post->id }}">Edit</a></p>
+                    <form action="/delete-post/{{ $post->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button>Delete</button>
+                    </form>
+
                     <hr>
                 </div>
             @endforeach
@@ -64,7 +72,7 @@
             <h2>All Posts</h2>
             @foreach ($posts as $post)
                 <div style="margin-bottom: 20px;">
-                    <h3>{{ $post->title }}</h3>
+                    <h3>{{ $post->title }} by {{ $post->user->name }}</h3>
                     <p>{{ $post->body }}</p>
                     <hr>
                 </div>
